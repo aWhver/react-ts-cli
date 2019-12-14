@@ -1,0 +1,11 @@
+{
+  "name": "react-ts-cli",
+  "version": "1.0.0",
+  "description": "cli based on React V16 and typescript",
+  "main": "index.js",
+  "author": "Inigo",
+  "license": "MIT",
+  "repository": {
+    "url": "https://github.com/aWhver/react-ts-cli.git"
+  }
+}
