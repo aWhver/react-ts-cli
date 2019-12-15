@@ -25,10 +25,18 @@
     "@babel/core": "^7.7.5",
     "babel-loader": "^8.0.6",
     "chalk": "^3.0.0",
+    "husky": "^3.1.0",
+    "lint-staged": "^9.5.0",
     "react-dev-utils": "^10.0.0",
     "ts-loader": "^6.2.1",
+    "validate-commit-msg": "^2.14.0",
     "webpack": "^4.41.2",
     "webpack-cli": "^3.3.10",
     "webpack-dev-server": "^3.9.0"
+  },
+  "husky": {
+    "hooks": {
+      "commit-msg": "validate-commit-msg"
+    }
   }
 }
