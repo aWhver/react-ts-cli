@@ -44,6 +44,7 @@ module.exports = {
     new ForkTsCheckerWebpackPlugin({
       useTypescriptIncrementalApi: true,
       watch: resolveApp('/src'),
+      checkSyntacticErrors: true,
       silent: true // 不打印logger
     })
   ]

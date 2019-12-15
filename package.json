@@ -41,7 +41,7 @@
     "webpack-dev-server": "^3.9.0"
   },
   "lint-staged": {
-    "*.{ts,tsx}": [
+    "*.{.ts,.tsx}": [
       "yarn lint:fix",
       "git add"
     ]
