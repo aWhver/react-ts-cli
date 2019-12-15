@@ -1,12 +1,14 @@
 const webpack = require('webpack');
 const webpackDevServer = require('webpack-dev-server');
 const formatWebpackMessages = require('react-dev-utils/formatWebpackMessages');
+const openBrowser = require('react-dev-utils/openBrowser');
 const clearConsole = require('react-dev-utils/clearConsole');
 const chalk = require('chalk');
 const webpackConfig = require('../webpack/webpack.config');
 const port = '5600';
 
 const complier = webpack(webpackConfig);
+const openUrl = `http://localhost:${port}`;
 
 complier.plugin('invalid', () => {
   clearConsole();
@@ -29,6 +31,7 @@ complier.plugin('done', stats => {
       );
       console.log();
     }
+    openBrowser(openUrl);
   }
 
   if (messages.errors.length) {
@@ -59,9 +62,7 @@ complier.plugin('done', stats => {
 const devServer = new webpackDevServer(complier, {
   disableHostCheck: true,
   compress: true,
-  open: true,
-  liveReload: true,
-  hot: false,
+  hot: true,
   quiet: true
 });
 
