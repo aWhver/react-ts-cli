@@ -36,7 +36,7 @@ complier.plugin('done', stats => {
 
   if (messages.errors.length) {
     console.log(chalk.red('编译失败！'));
-    messages.errors.forEach(meg => {
+    messages.errors.forEach(message => {
       console.log(message);
       console.log();
     });

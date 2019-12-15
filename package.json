@@ -9,7 +9,9 @@
     "url": "https://github.com/aWhver/react-ts-cli.git"
   },
   "scripts": {
-    "start": "node scripts/start.js"
+    "start": "node scripts/start.js",
+    "lint:fix": "tslint --project tsconfig.json --fix",
+    "lint-staged": "lint-staged"
   },
   "dependencies": {
     "@babel/preset-env": "^7.7.6",
@@ -25,18 +27,30 @@
     "@babel/core": "^7.7.5",
     "babel-loader": "^8.0.6",
     "chalk": "^3.0.0",
+    "eslint-config-react-app": "^5.1.0",
     "husky": "^3.1.0",
     "lint-staged": "^9.5.0",
     "react-dev-utils": "^10.0.0",
     "ts-loader": "^6.2.1",
+    "tslint": "^5.20.1",
+    "tslint-config-prettier": "^1.18.0",
+    "tslint-eslint-rules": "^5.4.0",
+    "tslint-react": "^4.1.0",
     "validate-commit-msg": "^2.14.0",
     "webpack": "^4.41.2",
     "webpack-cli": "^3.3.10",
     "webpack-dev-server": "^3.9.0"
   },
+  "lint-staged": {
+    "*.{ts,tsx}": [
+      "yarn lint:fix",
+      "git add"
+    ]
+  },
   "husky": {
     "hooks": {
-      "commit-msg": "validate-commit-msg"
+      "commit-msg": "validate-commit-msg",
+      "pre-commit": "lint-staged"
     }
   }
 }

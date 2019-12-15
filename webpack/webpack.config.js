@@ -1,5 +1,6 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const ForkTsCheckerWebpackPlugin = require('react-dev-utils/ForkTsCheckerWebpackPlugin');
 const { resolveApp } = require('./utils');
 module.exports = {
   mode: 'development',
@@ -39,6 +40,11 @@ module.exports = {
       inject: true,
       title: 'React App with tyepscript',
       filename: 'index.html'
+    }),
+    new ForkTsCheckerWebpackPlugin({
+      useTypescriptIncrementalApi: true,
+      watch: resolveApp('/src'),
+      silent: true // 不打印logger
     })
   ]
 };
