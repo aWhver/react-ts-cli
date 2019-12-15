@@ -5,8 +5,9 @@ module.exports = {
   mode: 'development',
   entry: [resolveApp('./src/index.tsx')],
   output: {
-    filename: 'bundle.js',
+    filename: 'js/bundle.js',
     path: resolveApp('/dist'),
+    chunkFilename: 'js/[name].chunk.js',
     devtoolModuleFilenameTemplate: info =>
       path.resolve(info.absoluteResourcePath).replace(/\\/g, '/')
   },
