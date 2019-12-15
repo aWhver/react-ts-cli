@@ -16,6 +16,7 @@ complier.plugin('invalid', () => {
 });
 
 complier.plugin('done', stats => {
+  clearConsole();
   const json = stats.toJson({}, true);
   const messages = formatWebpackMessages(json);
   const isComplieSuccess = !messages.errors.length && !messages.warnings.length;
