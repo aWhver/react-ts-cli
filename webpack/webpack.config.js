@@ -21,8 +21,8 @@ module.exports = {
         use: {
           loader: 'eslint-loader',
           options: {
-            // cache: true,
-          },
+            cache: true
+          }
         },
         exclude: /node_modules/
       },
@@ -39,6 +39,15 @@ module.exports = {
             loader: 'ts-loader'
           }
         ]
+      },
+      {
+        test: /\.js$/,
+        use: {
+          loader: require.resolve('babel-loader'),
+          options: {
+            presets: ['@babel/preset-env']
+          }
+        }
       }
     ]
   },
