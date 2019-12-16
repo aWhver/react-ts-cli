@@ -4,7 +4,7 @@ const ForkTsCheckerWebpackPlugin = require('react-dev-utils/ForkTsCheckerWebpack
 const { resolveApp } = require('./utils');
 module.exports = {
   mode: 'development',
-  entry: [resolveApp('./src/index.tsx')],
+  entry: [resolveApp('./src/index')],
   output: {
     filename: 'js/bundle.js',
     path: resolveApp('/build'),
