@@ -1,7 +1,7 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const ForkTsCheckerWebpackPlugin = require('react-dev-utils/ForkTsCheckerWebpackPlugin');
-const { resolveApp } = require('./utils');
+const { resolveApp, getStyleLoaders } = require('./utils');
 module.exports = {
   mode: 'development',
   entry: [resolveApp('./src/index')],
@@ -48,6 +48,20 @@ module.exports = {
             presets: ['@babel/preset-env']
           }
         }
+      },
+      {
+        test: /\.css$/,
+        use: getStyleLoaders(),
+        sideEffects: true
+      },
+      {
+        test: /\.less$/,
+        use: getStyleLoaders(
+          {
+            importLoaders: 1
+          },
+          'less-loader'
+        )
       }
     ]
   },

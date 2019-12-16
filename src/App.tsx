@@ -9,7 +9,7 @@ class App extends Component<any, IState> {
   render() {
     const { name, age } = this.state;
 
-    return <div>
+    return <div className="wrap">
       <p>name: {name}</p>
       <p>age: {age}</p>
       This is React App</div>;
