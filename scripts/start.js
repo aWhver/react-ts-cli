@@ -3,6 +3,8 @@ const webpackDevServer = require('webpack-dev-server');
 const formatWebpackMessages = require('react-dev-utils/formatWebpackMessages');
 const openBrowser = require('react-dev-utils/openBrowser');
 const clearConsole = require('react-dev-utils/clearConsole');
+const evalSourceMapMiddleware = require('react-dev-utils/evalSourceMapMiddleware');
+const errorOverlayMiddleware = require('react-dev-utils/errorOverlayMiddleware');
 const chalk = require('chalk');
 const webpackConfig = require('../webpack/webpack.config');
 const port = '5600';
@@ -64,7 +66,12 @@ const devServer = new webpackDevServer(complier, {
   disableHostCheck: true,
   compress: true,
   hot: true,
-  quiet: true
+  quiet: true,
+  overlay: false,
+  before(app, server) {
+    app.use(evalSourceMapMiddleware(server));
+    app.use(errorOverlayMiddleware());
+  }
 });
 
 devServer.listen(port, '0.0.0.0', err => {

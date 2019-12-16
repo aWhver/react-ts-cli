@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { IState } from './types';
 
+/** eslint @typescript-eslint/no-explicit-any: ['off'] */
 class App extends Component<any, IState> {
   state: IState = {
     name: 'zhaojuntong',
@@ -8,7 +9,7 @@ class App extends Component<any, IState> {
   }
   render() {
     const { name, age } = this.state;
-    const a: string = "test";
+    const a = "test";
 
     return <div>
       <p>name: {name}</p>

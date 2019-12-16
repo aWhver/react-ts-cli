@@ -13,5 +13,8 @@ module.exports = {
     ecmaFeatures: {
       jsx: true
     }
+  },
+  rules: {
+    "@typescript-eslint/no-explicit-any": 2
   }
 };

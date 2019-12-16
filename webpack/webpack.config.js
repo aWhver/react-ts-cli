@@ -16,6 +16,17 @@ module.exports = {
   module: {
     rules: [
       {
+        test: /\.(js|jsx|ts|tsx)$/,
+        enforce: 'pre', // 防止解析顺序错乱
+        use: {
+          loader: 'eslint-loader',
+          options: {
+            // cache: true,
+          },
+        },
+        exclude: /node_modules/
+      },
+      {
         test: /\.(ts|tsx)$/,
         use: [
           {
