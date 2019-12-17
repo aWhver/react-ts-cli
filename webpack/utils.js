@@ -2,15 +2,20 @@ const path = require('path');
 const resolveApp = _path => path.resolve(_path);
 const postcssPresetEnv = require('postcss-preset-env');
 const postcssNormalize = require('postcss-normalize');
+const miniCssExtractPlugin = require('mini-css-extract-plugin');
+const isProductionEnv = process.env.NODE_ENV === 'production';
 
 function getStyleLoaders(cssOption = {}, preLoader) {
   const loaders = [
     require.resolve('style-loader'),
+    isProductionEnv && {
+      loader: miniCssExtractPlugin.loader,
+    },
     {
       loader: require.resolve('css-loader'),
       options: cssOption
     }
-  ];
+  ].filter(Boolean);
   if (preLoader) {
     const preLoaders = [
       {
