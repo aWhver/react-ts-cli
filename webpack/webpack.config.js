@@ -1,16 +1,17 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const ForkTsCheckerWebpackPlugin = require('react-dev-utils/ForkTsCheckerWebpackPlugin');
-const { resolveApp, getStyleLoaders } = require('./utils');
+const { getStyleLoaders } = require('./utils');
+const { appSrc, appEntry, appBuild, templateHtml } = require('./paths');
 const isDevelopmentEnv = process.env.NODE_ENV === 'development';
 const isProductionEnv = process.env.NODE_ENV === 'production';
 
 module.exports = {
   mode: process.env.NODE_ENV,
-  entry: [resolveApp('./src/index')],
+  entry: [appEntry],
   output: {
     filename: 'js/bundle.js',
-    path: resolveApp('/build'),
+    path: appBuild,
     chunkFilename: isProductionEnv
       ? 'js/[name].[contenthash:8].chunk.js'
       : 'js/[name].chunk.js',
@@ -77,14 +78,14 @@ module.exports = {
   },
   plugins: [
     new HtmlWebpackPlugin({
-      template: resolveApp('public/index.html'),
+      template: templateHtml,
       inject: true,
       title: 'React App with tyepscript',
       filename: 'index.html'
     }),
     new ForkTsCheckerWebpackPlugin({
       useTypescriptIncrementalApi: true,
-      watch: resolveApp('/src'),
+      watch: appSrc,
       checkSyntacticErrors: true,
       silent: true // 不打印logger
     })
