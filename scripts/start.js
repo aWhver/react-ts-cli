@@ -1,3 +1,6 @@
+// 在这里设置环境变量代替 corss-env
+process.env.NODE_ENV = 'development';
+
 const webpack = require('webpack');
 const webpackDevServer = require('webpack-dev-server');
 const formatWebpackMessages = require('react-dev-utils/formatWebpackMessages');

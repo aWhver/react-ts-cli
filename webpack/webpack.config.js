@@ -2,17 +2,24 @@ const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const ForkTsCheckerWebpackPlugin = require('react-dev-utils/ForkTsCheckerWebpackPlugin');
 const { resolveApp, getStyleLoaders } = require('./utils');
+const isDevelopmentEnv = process.env.NODE_ENV === 'development';
+const isProductionEnv = process.env.NODE_ENV === 'production';
+
 module.exports = {
-  mode: 'development',
+  mode: process.env.NODE_ENV,
   entry: [resolveApp('./src/index')],
   output: {
     filename: 'js/bundle.js',
     path: resolveApp('/build'),
-    chunkFilename: 'js/[name].chunk.js',
+    chunkFilename: isProductionEnv
+      ? 'js/[name].[contenthash:8].chunk.js'
+      : 'js/[name].chunk.js',
     devtoolModuleFilenameTemplate: info =>
       path.resolve(info.absoluteResourcePath).replace(/\\/g, '/')
   },
-  devtool: 'cheap-module-source-map',
+  devtool: isProductionEnv
+    ? 'source-map'
+    : isDevelopmentEnv && 'cheap-module-source-map',
   module: {
     rules: [
       {
