@@ -45,16 +45,30 @@ function build() {
       }
     }
     if (messages.errors.length) {
+      console.log(chalk.red('编译过程中产生以下错误'));
+      console.log();
       messages.errors.forEach(message => {
         console.log(chalk.red(message));
         console.log();
       });
+      console.log(chalk.red('编译失败！,请仔细阅读错误提示，修改后再次编译'));
     }
     if (messages.warnings.length) {
+      console.log(chalk.yellow('编译过程中产生以下警告'));
+      console.log();
       messages.warnings.forEach(message => {
         console.log(chalk.yellow(message));
         console.log();
       });
+      console.log(chalk.cyan('你可以使用以下注释来忽略警告.'));
+      console.log(chalk.cyan(`
+        使用 /* eslint-disable */
+        忽略整个文件
+      `));
+      console.log(chalk.cyan(`
+        使用 // eslint-disable-next-line
+        忽略下一行
+      `));
     }
   });
 };
