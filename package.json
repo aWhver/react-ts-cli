@@ -70,7 +70,7 @@
     "eslint-plugin-react-hooks": "2.x"
   },
   "lint-staged": {
-    "*.{.ts,.tsx}": [
+    "*.{ts,tsx}": [
       "yarn lint:fix",
       "git add"
     ]
