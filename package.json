@@ -69,6 +69,13 @@
     "eslint-plugin-react": "7.x",
     "eslint-plugin-react-hooks": "2.x"
   },
+  "browserslist": [
+    "> 0.3%",
+    "last 7 versions",
+    "Android >= 4",
+    "Firefox >= 20",
+    "iOS >= 8"
+  ],
   "lint-staged": {
     "*.{ts,tsx}": [
       "yarn lint:fix",
