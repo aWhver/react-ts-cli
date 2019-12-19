@@ -4,7 +4,7 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const OptimizeCssAssetsWebpackPlugin = require('optimize-css-assets-webpack-plugin');
 const safePostCssParser = require('postcss-safe-parser');
 const ForkTsCheckerWebpackPlugin = require('react-dev-utils/ForkTsCheckerWebpackPlugin');
-const { getStyleLoaders } = require('./utils');
+const { getStyleLoaders, resolveApp } = require('./utils');
 const { appSrc, appEntry, appBuild, templateHtml } = require('./paths');
 const isDevelopmentEnv = process.env.NODE_ENV === 'development';
 const isProductionEnv = process.env.NODE_ENV === 'production';
@@ -91,10 +91,23 @@ module.exports = {
           },
           'less-loader'
         )
+      },
+      {
+        test: /\.(png|gif|jp?eg|webp|bmp)$/i,
+        use: {
+          loader: require.resolve('url-loader'),
+          options: {
+            limit: 8192,
+            name: 'media/[name].[hash:8].[ext]'
+          }
+        }
       }
     ]
   },
   resolve: {
+    alias: {
+      'images': resolveApp('src/images')
+    },
     extensions: ['.ts', '.tsx', '.js']
   },
   plugins: [
