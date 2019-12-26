@@ -129,5 +129,6 @@ module.exports = {
       checkSyntacticErrors: true,
       silent: true // 不打印logger
     })
-  ].filter(Boolean)
+  ].filter(Boolean),
+  performance: false
 };

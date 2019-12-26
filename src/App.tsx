@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { IState } from './types';
 import car from 'images/se.jpeg';
+import './a.less';
 // eslint-disable-next-line
 class App extends Component<any, IState> {
   state: IState = {
@@ -12,7 +13,7 @@ class App extends Component<any, IState> {
 
     return (
       <div className="wrap">
-        <p>name: {name}</p>
+        <p className="color">name: {name}</p>
         <p>age: {age}</p>
         This is React App
         <img alt="" src={car} />
