@@ -1,4 +1,5 @@
 const path = require('path');
+const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const OptimizeCssAssetsWebpackPlugin = require('optimize-css-assets-webpack-plugin');
@@ -123,6 +124,7 @@ module.exports = {
       filename: 'css/[name].[contenthash:8].css',
       chunkFilename: 'css/[name].[contenthash:8].chunk.css'
     }),
+    isDevelopmentEnv && new webpack.HotModuleReplacementPlugin(),
     new ForkTsCheckerWebpackPlugin({
       useTypescriptIncrementalApi: true,
       watch: appSrc,
