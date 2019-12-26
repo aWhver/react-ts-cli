@@ -80,7 +80,9 @@ module.exports = {
       },
       {
         test: /\.css$/,
-        use: getStyleLoaders(),
+        use: getStyleLoaders({
+          modules: true
+        }),
         sideEffects: true
       },
       {
