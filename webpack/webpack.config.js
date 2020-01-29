@@ -109,7 +109,9 @@ module.exports = {
   },
   resolve: {
     alias: {
-      'images': resolveApp('src/images')
+      'controller': resolveApp('src/controller'),
+      'images': resolveApp('src/images'),
+      'routers': resolveApp('src/routers')
     },
     extensions: ['.ts', '.tsx', '.js']
   },

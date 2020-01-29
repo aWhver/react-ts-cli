@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import AppRouter from 'routers';
 import { IState } from './types';
 import car from 'images/se.jpeg';
 import './a.less';
@@ -12,12 +13,15 @@ class App extends Component<any, IState> {
     const { name, age } = this.state;
 
     return (
-      <div className="wrap">
-        <p className="color">name: {name}</p>
-        <p>age: {age}</p>
-        This is React App
-        <img alt="" src={car} />
-      </div>
+      <React.Fragment>
+        <div className="wrap">
+          <p className="color">name: {name}</p>
+          <p>age: {age}</p>
+          This is React App
+          <img alt="" src={car} />
+        </div>
+        <AppRouter />
+      </React.Fragment>
     );
   }
 }
