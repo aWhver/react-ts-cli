@@ -20,7 +20,8 @@ module.exports = {
       ? 'js/[name].[contenthash:8].chunk.js'
       : 'js/[name].chunk.js',
     devtoolModuleFilenameTemplate: info =>
-      path.resolve(info.absoluteResourcePath).replace(/\\/g, '/')
+      path.resolve(info.absoluteResourcePath).replace(/\\/g, '/'),
+    jsonpFunction: `webpackJsonp-react-ts-cli`,
   },
   devtool: isProductionEnv
     ? 'source-map'
@@ -41,7 +42,14 @@ module.exports = {
           }
         },
       })
-    ]
+    ],
+    // splitChunks: {
+    //   chunks: 'all',
+    //   name: false,
+    // },
+    runtimeChunk: {
+      name: entrypoint => `runtime-${entrypoint.name}`,
+    }
   },
   module: {
     rules: [

@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import AppRouter from 'routers';
+import AppRouter from './routers';
 import { IState } from './types';
 import car from 'images/se.jpeg';
 import './a.less';
