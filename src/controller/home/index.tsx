@@ -1,5 +1,6 @@
 import React from 'react';
-import { Observable } from 'rxjs';
+import { Observable, fromEvent, of } from 'rxjs';
+import { map, concatAll } from 'rxjs/operators';
 import { ObserverParam } from './Types';
 
 class Home extends React.PureComponent<{}, {}> {
@@ -30,7 +31,18 @@ class Home extends React.PureComponent<{}, {}> {
   });
 
   componentDidMount() {
-    console.log(2);
+    const source = fromEvent(document.body, 'click').pipe(
+      map(e => of(1, 2, 3)),
+      concatAll()
+      );
+    source.subscribe({
+      next: value => {
+        console.log(value);
+      },
+      error: error => {
+        console.log(error);
+      }
+    });
   }
 
   onSubscribe = () => {
