@@ -29,6 +29,15 @@ const routers: (NewRouteProps & LinkProps)[] = [
       loading: Loading
     })
   },
+  {
+    text: 'rxjs操作符',
+    path: '/operators',
+    to: '/operators',
+    component: Loadable({
+      loader: () => import('../controller/operators'),
+      loading: Loading
+    })
+  },
 ];
 
 export default routers;
