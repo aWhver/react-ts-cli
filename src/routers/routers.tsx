@@ -38,6 +38,15 @@ const routers: (NewRouteProps & LinkProps)[] = [
       loading: Loading
     })
   },
+  {
+    text: '多异步处理',
+    path: '/rxjs/combile',
+    to: '/rxjs/combile',
+    component: Loadable({
+      loader: () => import('../controller/rxjs/combine'),
+      loading: Loading
+    })
+  },
 ];
 
 export default routers;
