@@ -21,7 +21,7 @@ class AppRouter extends Component {
               route={route}
             ></Route>
           ))}
-          <Redirect from="/" to="/home" />
+          <Redirect from="/" to="/rxjs/home" />
         </Switch>
       </Router>
     );

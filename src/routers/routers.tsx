@@ -13,28 +13,28 @@ const Loading = (props: Loadable.LoadingComponentProps) => (
 const routers: (NewRouteProps & LinkProps)[] = [
   {
     text: 'home',
-    path: '/home',
-    to: '/home',
+    path: '/rxjs/home',
+    to: '/rxjs/home',
     component: Loadable({
-      loader: () => import('../controller/home'),
+      loader: () => import('../controller/rxjs/home'),
       loading: Loading
     })
   },
   {
     text: '拖拽',
-    path: '/drag',
-    to: '/drag',
+    path: '/rxjs/drag',
+    to: '/rxjs/drag',
     component: Loadable({
-      loader: () => import('../controller/drag'),
+      loader: () => import('../controller/rxjs/drag'),
       loading: Loading
     })
   },
   {
     text: 'rxjs操作符',
-    path: '/operators',
-    to: '/operators',
+    path: '/rxjs/operators',
+    to: '/rxjs/operators',
     component: Loadable({
-      loader: () => import('../controller/operators'),
+      loader: () => import('../controller/rxjs/operators'),
       loading: Loading
     })
   },
