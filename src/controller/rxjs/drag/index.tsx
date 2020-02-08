@@ -106,6 +106,8 @@ class Drag extends PureComponent<{}, IState> {
         if ((0 <= posX && posX <= maxLeft)) {
           this.oVideo.style.left = `${posX}px`;
         }
+        this.oVideo.style.bottom = `auto`;
+        this.oVideo.style.right = `auto`;
       });
   }
 
