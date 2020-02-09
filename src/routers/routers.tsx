@@ -56,6 +56,15 @@ const routers: (NewRouteProps & LinkProps)[] = [
       loading: Loading
     })
   },
+  {
+    text: 'delay/delayWhen操作符',
+    path: '/rxjs/delay',
+    to: '/rxjs/delay',
+    component: Loadable({
+      loader: () => import('../controller/rxjs/delay'),
+      loading: Loading
+    })
+  },
 ];
 
 export default routers;
