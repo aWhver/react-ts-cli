@@ -47,6 +47,15 @@ const routers: (NewRouteProps & LinkProps)[] = [
       loading: Loading
     })
   },
+  {
+    text: 'scan和buffer操作符',
+    path: '/rxjs/scan_buffer',
+    to: '/rxjs/scan_buffer',
+    component: Loadable({
+      loader: () => import('../controller/rxjs/scan_buffer'),
+      loading: Loading
+    })
+  },
 ];
 
 export default routers;

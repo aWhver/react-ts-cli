@@ -6,6 +6,7 @@
     "jsx": "react",
     "esModuleInterop": true,
     "allowSyntheticDefaultImports": true,
+    "experimentalDecorators": true,
     "baseUrl": ".",
     "paths": {
       "images/*": ["./src/images/*"]
