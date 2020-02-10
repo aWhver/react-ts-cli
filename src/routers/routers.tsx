@@ -74,6 +74,15 @@ const routers: (NewRouteProps & LinkProps)[] = [
       loading: Loading
     })
   },
+  {
+    text: 'ditinct操作符(去重)',
+    path: '/rxjs/distinct',
+    to: '/rxjs/distinct',
+    component: Loadable({
+      loader: () => import('../controller/rxjs/distinct'),
+      loading: Loading
+    })
+  },
 ];
 
 export default routers;
