@@ -1779,6 +1779,11 @@ cache-base@^1.0.1:
     union-value "^1.0.0"
     unset-value "^1.0.0"
 
+cached-bind@^1.1.0:
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/cached-bind/-/cached-bind-1.1.0.tgz#b13dd349cc625ddad383f321ba83b0a09b980aa9"
+  integrity sha512-/jhmF6reCWJQcmsHRuPimUpvq8+rTvEqIHGNjar/zKRHg6Kpn5Men8AgL7j1PvS1xgPxOIcB1ZwtZvh33QmPWw==
+
 call-me-maybe@^1.0.1:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/call-me-maybe/-/call-me-maybe-1.0.1.tgz#26d208ea89e37b5cbde60250a15f031c16a4d66b"

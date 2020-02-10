@@ -65,6 +65,15 @@ const routers: (NewRouteProps & LinkProps)[] = [
       loading: Loading
     })
   },
+  {
+    text: 'debounce操作符',
+    path: '/rxjs/debounce',
+    to: '/rxjs/debounce',
+    component: Loadable({
+      loader: () => import('../controller/rxjs/debounce'),
+      loading: Loading
+    })
+  },
 ];
 
 export default routers;
