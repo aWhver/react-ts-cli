@@ -6,6 +6,11 @@ import { IProps, IState, ColumnItemProps } from './Types';
 import { ItemTypes, cardSource, collect, cardTarget, DropCollect } from './constant';
 
 class TableDrag extends React.Component<IProps, IState> {
+
+  onClick = () => {
+    console.log(1);
+  }
+
   render() {
     const {
       isDragging,
@@ -14,7 +19,7 @@ class TableDrag extends React.Component<IProps, IState> {
       connectDropTarget,
     } = this.props;
 
-    return connectDragSource(connectDropTarget(<div>
+    return connectDragSource(connectDropTarget(<div onClick={this.onClick}>
       I am a draggable card number {columnItem.label} {columnItem.index}
       {isDragging && ' (and I am being dragged now)'}
     </div>)
