@@ -1,7 +1,7 @@
 import { ConnectDragSource, ConnectDropTarget  } from 'react-dnd';
 export interface ColumnItemProps {
   label: string;
-  index?: number;
+  columnIndex?: number;
 }
 
 interface Offset {
@@ -9,7 +9,7 @@ interface Offset {
   y: number;
 }
 
-type NewOffser = Offset | null;
+type TOffser = Offset | null;
 
 export interface IProps {
   id?: number;
@@ -20,7 +20,7 @@ export interface IProps {
   isOver: boolean;
   connectDropTarget: ConnectDropTarget;
   isOverCurrent: boolean;
-  differenceFromInitialOffset: NewOffser;
+  differenceFromInitialOffset: TOffser;
   onChange: (val: ColumnItemProps, index: number) => void;
 }
 

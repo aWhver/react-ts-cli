@@ -1,13 +1,12 @@
+import { DragSourceMonitor, DropTargetMonitor, DropTargetConnector, DragSourceConnector } from 'react-dnd';
+import { IProps } from './Types';
+
 export const ItemTypes = {
-  CARD: 'card'
+  COLUMN: 'COLUMN'
 };
 
-/**
- * Specifies the drag source contract.
- * Only `beginDrag` function is required.
- */
-export const cardSource = {
-  beginDrag(props) {
+export const columnSource = {
+  beginDrag(props: IProps) {
     const { columnItem, columnIndex } = props;
     // 传参给target
 
@@ -17,7 +16,7 @@ export const cardSource = {
     };
   },
 
-  endDrag(props, monitor, component) {
+  endDrag(props: IProps, monitor: DragSourceMonitor) {
     if (!monitor.didDrop()) {
       return;
     }
@@ -26,8 +25,8 @@ export const cardSource = {
   }
 };
 
-export const cardTarget = {
-  drop(props, monitor) {
+export const columnTarget = {
+  drop(props: IProps, monitor: DropTargetMonitor) {
     const { columnItem, columnIndex, onChange } = props;
     const dragItem = monitor.getItem();
     const dragIndex = dragItem.columnIndex;
@@ -35,7 +34,7 @@ export const cardTarget = {
     console.log(dragItem, hoverIndex, dragIndex, columnItem);
     onChange && onChange(dragItem, hoverIndex);
   },
-  hover(props, monitor) {
+  hover(props: IProps, monitor: DropTargetMonitor) {
     const { columnIndex } = props;
     const dragItem = monitor.getItem();
 
@@ -44,17 +43,14 @@ export const cardTarget = {
   }
 };
 
-export function collect(connect, monitor) {
+export function dragCollect<CollectedProps, RequiredProps>(connect: DragSourceConnector, monitor: DragSourceMonitor) {
   return {
-    // Call this function inside render()
-    // to let React DnD handle the drag events:
     connectDragSource: connect.dragSource(),
-    // You can ask the monitor about the current drag state:
     isDragging: monitor.isDragging()
   };
 }
 
-export function DropCollect(connect, monitor) {
+export function dropCollect<CollectedProps, RequiredProps>(connect: DropTargetConnector, monitor: DropTargetMonitor) {
   return {
     connectDropTarget: connect.dropTarget(),
     isOver: monitor.isOver(),

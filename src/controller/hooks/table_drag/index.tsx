@@ -3,14 +3,9 @@ import React from 'react';
 import { DragSource, DropTarget, DndProvider } from 'react-dnd';
 import HTML5Backend from 'react-dnd-html5-backend';
 import { IProps, IState, ColumnItemProps } from './Types';
-import { ItemTypes, cardSource, collect, cardTarget, DropCollect } from './constant';
+import { ItemTypes, columnSource, columnTarget, dragCollect, dropCollect } from './constant';
 
 class TableDrag extends React.Component<IProps, IState> {
-
-  onClick = () => {
-    console.log(1);
-  }
-
   render() {
     const {
       isDragging,
@@ -19,8 +14,8 @@ class TableDrag extends React.Component<IProps, IState> {
       connectDropTarget,
     } = this.props;
 
-    return connectDragSource(connectDropTarget(<div onClick={this.onClick}>
-      I am a draggable card number {columnItem.label} {columnItem.index}
+    return connectDragSource(connectDropTarget(<div>
+      I am a draggable card number {columnItem.label} {columnItem.columnIndex}
       {isDragging && ' (and I am being dragged now)'}
     </div>)
 
@@ -28,8 +23,8 @@ class TableDrag extends React.Component<IProps, IState> {
   }
 }
 
-const NewTableDrag = DragSource(ItemTypes.CARD, cardSource, collect)(TableDrag);
-const NewTableDrop = DropTarget(ItemTypes.CARD, cardTarget, DropCollect)(NewTableDrag);
+const NewTableDrag = DragSource(ItemTypes.COLUMN, columnSource, dragCollect)(TableDrag);
+const NewTableDrop = DropTarget(ItemTypes.COLUMN, columnTarget, dropCollect)(NewTableDrag);
 
 class DragWrap extends React.Component {
   state: IState = {
@@ -46,11 +41,11 @@ class DragWrap extends React.Component {
     ]
   };
 
-  onChange = (value, targetIndex) => {
+  onChange = (value: ColumnItemProps, targetIndex: number) => {
     console.log(value, targetIndex);
     const data = this.state.data;
     const targetItem = data[targetIndex]; // 需要被替换的项
-    let dragItem: ColumnItemProps | null = null; // 替换的项
+    let dragItem: ColumnItemProps; // 替换的项
     let dragIndex: number = 0;
     data.forEach((item, index) => {
       if (index === value.columnIndex) {
