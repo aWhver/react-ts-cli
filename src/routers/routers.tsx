@@ -92,6 +92,15 @@ const routers: (NewRouteProps & LinkProps)[] = [
       loading: Loading
     })
   },
+  {
+    text: 'react-dnd拖拽',
+    path: '/hooks/table_drag',
+    to: '/hooks/table_drag',
+    component: Loadable({
+      loader: () => import('../controller/hooks/table_drag'),
+      loading: Loading
+    })
+  },
 ];
 
 export default routers;
