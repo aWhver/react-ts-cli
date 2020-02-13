@@ -4,6 +4,7 @@ import { Switch, Route, Redirect } from 'react-router-dom';
 import { createHashHistory } from 'history';
 import routers from './routers';
 import Menu from './Menu';
+import './style.less';
 
 const history = createHashHistory();
 

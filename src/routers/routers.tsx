@@ -83,6 +83,15 @@ const routers: (NewRouteProps & LinkProps)[] = [
       loading: Loading
     })
   },
+  {
+    text: 'catch相关操作符',
+    path: '/rxjs/catch',
+    to: '/rxjs/catch',
+    component: Loadable({
+      loader: () => import('../controller/rxjs/catch'),
+      loading: Loading
+    })
+  },
 ];
 
 export default routers;
