@@ -2,6 +2,7 @@ import React from 'react';
 import { Observable, fromEvent, of } from 'rxjs';
 import { map, concatAll } from 'rxjs/operators';
 import { ObserverParam } from './Types';
+import QRCode from 'qrcode.react';
 
 class Home extends React.PureComponent<{}, {}> {
   observer = new Observable<ObserverParam>(subscriber => {
@@ -64,6 +65,7 @@ class Home extends React.PureComponent<{}, {}> {
     return (
       <div>
         this is home<button onClick={this.onSubscribe}>obverser</button>
+        <QRCode value="https://www.baidu.com" />
       </div>
     );
   }

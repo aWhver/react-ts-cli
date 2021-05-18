@@ -110,6 +110,33 @@ const routers: (NewRouteProps & LinkProps)[] = [
       loading: Loading
     })
   },
+  {
+    text: '测试class钩子渲染顺序',
+    path: '/testLifeCycle/renderOrder',
+    to: '/testLifeCycle/renderOrder',
+    component: Loadable({
+      loader: () => import('../controller/testLifeCycle/renderOrder'),
+      loading: Loading
+    })
+  },
+  {
+    text: '测试es6-super',
+    path: '/es6/class',
+    to: '/es6/class',
+    component: Loadable({
+      loader: () => import('../controller/es6/class'),
+      loading: Loading
+    })
+  },
+  {
+    text: '测试redux',
+    path: '/hooks/todo_list',
+    to: '/hooks/todo_list',
+    component: Loadable({
+      loader: () => import('../controller/hooks/todo_list'),
+      loading: Loading
+    })
+  },
 ];
 
 export default routers;

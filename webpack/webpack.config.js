@@ -3,6 +3,8 @@ const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const OptimizeCssAssetsWebpackPlugin = require('optimize-css-assets-webpack-plugin');
+const TestAsyncPlugin = require('./plugins/plugin1');
+// const TestAsyncPlugin = require('./plugins/plugin2');
 const safePostCssParser = require('postcss-safe-parser');
 const ForkTsCheckerWebpackPlugin = require('react-dev-utils/ForkTsCheckerWebpackPlugin');
 const { getStyleLoaders, resolveApp } = require('./utils');
@@ -19,7 +21,7 @@ module.exports = {
     chunkFilename: isProductionEnv
       ? 'js/[name].[contenthash:8].chunk.js'
       : 'js/[name].chunk.js',
-    devtoolModuleFilenameTemplate: info =>
+    devtoolModuleFilenameTemplate: (info) =>
       path.resolve(info.absoluteResourcePath).replace(/\\/g, '/'),
     jsonpFunction: `webpackJsonp-react-ts-cli`,
   },
@@ -39,17 +41,17 @@ module.exports = {
             // `annotation: true` appends the sourceMappingURL to the end of
             // the css file, helping the browser find the sourcemap
             annotation: true,
-          }
+          },
         },
-      })
+      }),
     ],
     // splitChunks: {
     //   chunks: 'all',
     //   name: false,
     // },
     runtimeChunk: {
-      name: entrypoint => `runtime-${entrypoint.name}`,
-    }
+      name: (entrypoint) => `runtime-${entrypoint.name}`,
+    },
   },
   module: {
     rules: [
@@ -59,10 +61,10 @@ module.exports = {
         use: {
           loader: 'eslint-loader',
           options: {
-            cache: true
-          }
+            cache: true,
+          },
         },
-        exclude: /node_modules/
+        exclude: /node_modules/,
       },
       {
         test: /\.(ts|tsx)$/,
@@ -70,38 +72,38 @@ module.exports = {
           {
             loader: 'babel-loader',
             options: {
-              presets: ['@babel/preset-env', '@babel/preset-react']
-            }
+              presets: ['@babel/preset-env', '@babel/preset-react'],
+            },
           },
           {
-            loader: 'ts-loader'
-          }
-        ]
+            loader: 'ts-loader',
+          },
+        ],
       },
       {
         test: /\.js$/,
         use: {
           loader: require.resolve('babel-loader'),
           options: {
-            presets: ['@babel/preset-env']
-          }
-        }
+            presets: ['@babel/preset-env'],
+          },
+        },
       },
       {
         test: /\.css$/,
         use: getStyleLoaders({
-          modules: true
+          modules: true,
         }),
-        sideEffects: true
+        sideEffects: true,
       },
       {
         test: /\.less$/,
         use: getStyleLoaders(
           {
-            importLoaders: 1
+            importLoaders: 1,
           },
           'less-loader'
-        )
+        ),
       },
       {
         test: /\.(png|gif|jp?eg|webp|bmp)$/i,
@@ -109,38 +111,41 @@ module.exports = {
           loader: require.resolve('url-loader'),
           options: {
             limit: 8192,
-            name: 'media/[name].[hash:8].[ext]'
-          }
-        }
-      }
-    ]
+            name: 'media/[name].[hash:8].[ext]',
+          },
+        },
+      },
+    ],
   },
   resolve: {
     alias: {
-      'controller': resolveApp('src/controller'),
-      'images': resolveApp('src/images'),
-      'routers': resolveApp('src/routers')
+      controller: resolveApp('src/controller'),
+      images: resolveApp('src/images'),
+      routers: resolveApp('src/routers'),
+      utils: resolveApp('src/utils'),
     },
-    extensions: ['.ts', '.tsx', '.js']
+    extensions: ['.ts', '.tsx', '.js'],
   },
   plugins: [
     new HtmlWebpackPlugin({
       template: templateHtml,
       inject: true,
       title: 'React App with tyepscript',
-      filename: 'index.html'
+      filename: 'index.html',
     }),
-    isProductionEnv && new MiniCssExtractPlugin({
-      filename: 'css/[name].[contenthash:8].css',
-      chunkFilename: 'css/[name].[contenthash:8].chunk.css'
-    }),
+    new TestAsyncPlugin({ name: 'inigo' }),
+    isProductionEnv &&
+      new MiniCssExtractPlugin({
+        filename: 'css/[name].[contenthash:8].css',
+        chunkFilename: 'css/[name].[contenthash:8].chunk.css',
+      }),
     isDevelopmentEnv && new webpack.HotModuleReplacementPlugin(),
     new ForkTsCheckerWebpackPlugin({
       useTypescriptIncrementalApi: true,
       watch: appSrc,
       checkSyntacticErrors: true,
-      silent: true // 不打印logger
-    })
+      silent: true, // 不打印logger
+    }),
   ].filter(Boolean),
-  performance: false
+  performance: false,
 };

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import {
   DndProvider,
   useDrag,
@@ -133,5 +133,39 @@ class Demo extends React.Component<{}, IState> {
     );
   }
 }
+console.log(Demo);
+// function MessageThread() {
+//   const [message, setMessage] = useState('');
 
-export default Demo;
+//   const showMessage = () => {
+//     alert('You said: ' + message);
+//   };
+
+//   const handleSendClick = () => {
+//     setTimeout(showMessage, 3000);
+//   };
+
+//   const handleMessageChange = (e) => {
+//     setMessage(e.target.value);
+//   };
+
+//   return <>
+//     <input value={message} onChange={handleMessageChange} />
+//     <button onClick={handleSendClick}>Send</button>
+//   </>;
+// }
+
+function Counter() {
+  const [count, setCount] = useState(0);
+
+  const prevCountRef = useRef<number>(3);
+  useEffect(() => {
+    prevCountRef.current = count;
+  });
+  const prevCount = prevCountRef.current;
+
+  return <h1>Now: {count}, before: {prevCount}<button onClick={() => setCount(7)}>setcount</button></h1>;
+}
+
+
+export default Counter;
