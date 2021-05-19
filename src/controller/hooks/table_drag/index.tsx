@@ -16,7 +16,7 @@ class TableDrag extends React.Component<IProps, IState> {
 
     return connectDragSource(connectDropTarget(<div>
       I am a draggable card number {columnItem.label} {columnItem.columnIndex}
-      {isDragging && ' (and I am being dragged now)'}
+      {isDragging && ' (and I am beings  dragged now)'}
     </div>)
 
     );

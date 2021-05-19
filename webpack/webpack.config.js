@@ -126,6 +126,10 @@ module.exports = {
     },
     extensions: ['.ts', '.tsx', '.js'],
   },
+  devServer: {
+    hot: true,
+    contentbase: '../build',
+  },
   plugins: [
     new HtmlWebpackPlugin({
       template: templateHtml,
@@ -146,6 +150,7 @@ module.exports = {
       checkSyntacticErrors: true,
       silent: true, // 不打印logger
     }),
+    isDevelopmentEnv && new webpack.HotModuleReplacementPlugin()
   ].filter(Boolean),
   performance: false,
 };
