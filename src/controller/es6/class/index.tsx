@@ -6,6 +6,7 @@ export default class TestClass extends React.Component {
     TestSuper.testa();
     new TestSuper().d();
   }
+
   render() {
     return <div>
       探索class和super知识

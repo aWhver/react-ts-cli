@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Child1 from './Child1';
+import './style.less';
 
 interface IState {
   count: number;
@@ -29,6 +30,7 @@ class TestRenderOrder extends Component<{}, IState> {
       <div>
         <button onClick={this.handleAdd}>click</button>
         <Child1 />
+        <div className="gradient"></div>
       </div>
     );
   }

@@ -1,0 +1,39 @@
+.gradient {
+  width: 200px;
+  height: 20px;
+  background-color: #ddd;
+  // background-color: hsla(0,0%,74.5%,.2);
+  // background: linear-gradient(45deg,hsla(0,0%,74.5%,.2) 25%,hsla(0,0%,50.6%,.24) 37%,hsla(0,0%,74.5%,.2) 63%);
+  //   animation: move 1.4s linear infinite;
+  // animation-iteration-count: infinite;
+  position: relative;
+  // background-size: 400% 100%;
+  &::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+
+    // opacity: 0.7;
+    // background-size: 400% 100%;
+    background: linear-gradient(
+      90deg,
+      hsla(0, 0%, 100%, 0),
+      hsla(0, 0%, 100%, 0.3),
+      hsla(0, 0%, 100%, 0)
+    );
+    animation: move 2s linear infinite;
+  }
+  @keyframes move {
+    0% {
+      transform: translateX(-100%);
+      // background-position: 100% 50%;
+    }
+    100% {
+      transform: translateX(0%);
+      // background-position: 0 50%;
+    }
+  }
+}

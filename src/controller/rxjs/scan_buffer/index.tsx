@@ -31,8 +31,8 @@ class ScanBuffer extends PureComponent<{}, IState> {
   }
 
   _initCounter() {
-    const addButton = document.getElementById('addButton');
-    const minusButton = document.getElementById('minusButton');
+    const addButton = document.getElementById('addButton') as HTMLElement;
+    const minusButton = document.getElementById('minusButton') as HTMLElement;
     const state = document.getElementById('state');
 
     const addClick = fromEvent(addButton, 'click').pipe(mapTo(1));
