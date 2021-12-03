@@ -1,5 +1,5 @@
 import React from 'react';
-import { TestSuper } from 'utils/super';
+import { TestSuper } from '../../../utils/super';
 
 export default class TestClass extends React.Component {
   componentDidMount() {

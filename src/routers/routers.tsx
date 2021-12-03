@@ -129,6 +129,15 @@ const routers: (NewRouteProps & LinkProps)[] = [
     })
   },
   {
+    text: '测试proxy',
+    path: '/es6/proxy',
+    to: '/es6/proxy',
+    component: Loadable({
+      loader: () => import('../controller/es6/proxy'),
+      loading: Loading
+    })
+  },
+  {
     text: '测试redux',
     path: '/hooks/todo_list',
     to: '/hooks/todo_list',

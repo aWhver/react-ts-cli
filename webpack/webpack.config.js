@@ -92,7 +92,7 @@ module.exports = {
       {
         test: /\.css$/,
         use: getStyleLoaders({
-          modules: true,
+          // modules: true,
         }),
         sideEffects: true,
       },
@@ -100,7 +100,7 @@ module.exports = {
         test: /\.less$/,
         use: getStyleLoaders(
           {
-            importLoaders: 1,
+            // importLoaders: 1,
           },
           'less-loader'
         ),

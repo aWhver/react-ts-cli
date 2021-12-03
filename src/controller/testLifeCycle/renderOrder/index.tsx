@@ -12,7 +12,6 @@ class TestRenderOrder extends Component<{}, IState> {
   }
   componentDidMount() {
     console.log('parent component didmounnt');
-
   }
 
   componentDidUpdate() {
